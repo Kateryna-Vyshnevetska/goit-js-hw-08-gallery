@@ -1,6 +1,5 @@
 export default [
   {
-
     preview:
       'https://i.picsum.photos/id/236/200/300.jpg?hmac=k9j4rU4XMUV_jh877uh_7LxlkJ5B9vEl1fA6lj3ynuE',
     original:

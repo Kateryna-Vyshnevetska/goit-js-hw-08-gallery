@@ -68,7 +68,8 @@ const checkKey = function checkButtonClick(event){
     rightKey();
     break;
     case 'Escape':
-    escapeKey(event);
+    refs.modal.classList.remove('is-open');
+    document.removeEventListener('keyup',event => checkKey(event.key));
     break;
     default:
     console.log('Something wrong');
@@ -76,16 +77,13 @@ const checkKey = function checkButtonClick(event){
   }
 }
 
-const escapeKey = function EscapePressOnKeyboard(event){
-  closeModal(event);
-}
 const leftKey = function ArrowLeftPressOnKeyboard(){
   if(currentImgIndex-1 <= length && currentImgIndex-1 >= 0){
     currentImgIndex -=1;
     const newImg = gallery[currentImgIndex].original;
     drawImg(newImg);
   }else{
-    return;
+    currentImgIndex = 0;
   }
 }
 const rightKey = function ArrowRightPressOnKeyboard(){
@@ -95,11 +93,11 @@ const rightKey = function ArrowRightPressOnKeyboard(){
     drawImg(newImg);
   }
   else{
-    return;
+    currentImgIndex === 0;
   }
 }
 
-const closeModal = function closeModalWindowWithLargeImg(event){
+const closeModal = function closeModalWindowByOverlay(event){
   const overlay = event.target.parentNode.querySelector('.lightbox__overlay');
   if(!overlay){
     return;
